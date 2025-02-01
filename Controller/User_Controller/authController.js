@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const Student = require('../../Model/User_Model/studentSchema'); // Import Student model
 const Teacher = require('../../Model/User_Model/teacherSchema'); // Import Teacher model
 
-const JWT_SECRET = process.env.JWT_SECRET; // Replace this with your actual JWT secret
+// const JWT_SECRET = process.env.JWT_SECRET; // Replace this with your actual JWT secret
+const JWT_SECRET = "ThisIsTheBestSecretForRupakInTheWorldAsItIsGeneratedByMe"; // Replace this with your actual JWT secret
 
 
 

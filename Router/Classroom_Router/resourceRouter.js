@@ -5,12 +5,13 @@ const bodyParser = require("body-parser")
 
 const router = express.Router();
 
-router.post('/upload', bodyParser.json(), upload.array('file', 10), resourceController.uploadResource);
-router.post('/uploadLink', bodyParser.json(), resourceController.postVideoResource);
-router.post("/updateTimeSpent", bodyParser.json(),resourceController.updateTimeSpent);
+router.post('/upload', upload.array('file', 10), resourceController.uploadResource);
+router.post('/uploadLink', resourceController.postVideoResource);
+router.post("/updateTimeSpent", resourceController.updateTimeSpent);
 router.post("/postVideoResource", bodyParser.json(), resourceController.postVideoResource);
-router.get("/getVideoResource", bodyParser.json(), resourceController.getAllVideoResource);
+router.get("/getVideoResource/:topicId", bodyParser.json(), resourceController.getAllVideoResource);
 router.get("/getAllResource/:topicId", bodyParser.json(), resourceController.getAllResource);
+// router.get("/getAllVideoResource/:topicId", bodyParser.json(), resourceController.getAllVideoResource);
 router.delete("/deleteResource/:resourceId/:fileName", bodyParser.json(), resourceController.deleteResource);
 
 module.exports = router;

@@ -4,7 +4,7 @@ const resourceVideoSchema = mongoose.Schema({
   name: String,
   subjectId: mongoose.Schema.ObjectId,
   topicId: mongoose.Schema.ObjectId,
-  videoUrl: { type: String, required: true },
+  videoUrl: [String],
   timeSpent: [
     {
       userId: {

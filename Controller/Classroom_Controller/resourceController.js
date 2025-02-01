@@ -152,10 +152,14 @@ exports.postVideoResource = async(req, res) => {
             subjectId,
             topicId,
             classroomId,
-            videoUrl
+            // videoUrl: ""
         })
 
         console.log(video);
+
+        video.videoUrl.push(videoUrl)
+
+        video.save();
         res.status(201).json({
             status: 'success',
             data: video
@@ -187,7 +191,9 @@ exports.getAllResource = async (req, res) => {
 }
 
 exports.getAllVideoResource = async (req, res) => {
-    const videos = await videoResource.find({});
+    console.log(req.params?.topicId)
+const videos = await videoResource.find({topicId: req.params?.topicId&& req.params.topicId});
+    
     console.log(videos);
     res.status(200).json({
         status: "success",

@@ -32,7 +32,7 @@ exports.createTopic = async (req, res) => {
       topicName,
       description,
       subjectId,
-      teacherId:  req.user,
+      teacherId,
       classroomId,
     });
 
