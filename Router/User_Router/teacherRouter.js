@@ -4,7 +4,7 @@ const teacherController = require('./../../Controller/User_Controller/teacherCon
 const bodyparser = require("body-parser")
 
 // Student routes
-router.get('/meTeacher', bodyparser.json() ,teacherController.getMeTeacher);
+router.post('/meTeacher', bodyparser.json() ,teacherController.getMeTeacher);
 // router.post('/videoWatchTime/:videoId', bodyparser.json() ,studentController.userWatchTime);
 // router.get('/get-watch-time', studentController.getWatchTime);
 // router.post('/updateResourceTime', bodyparser.json(),studentController.updateResourceTime);

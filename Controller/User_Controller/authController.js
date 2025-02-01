@@ -59,7 +59,7 @@ exports.loginStudent = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: student._id, email: student.email, name: student.name }, JWT_SECRET);
+    const token = jwt.sign({ id: student._id, email: student.email, name: student.name, accountType: "Student" }, JWT_SECRET);
     res.cookie('authToken', token, {
       httpOnly: true,         // Prevent access to cookie via JavaScript
       secure: false,           // Only send over HTTPS
@@ -123,7 +123,10 @@ exports.loginTeacher = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: teacher._id, email: teacher.email }, JWT_SECRET);
+    console.log("Teacher Id : ", teacher._id);
+    console.log("Teacher Email : ", teacher.email);
+    const token = jwt.sign({ id: teacher._id, email: teacher.email, name: teacher.name, accountType: "Teacher" }, JWT_SECRET);
+    console.log(token);
     res.cookie('authToken', token, {
       httpOnly: true,         // Prevent access to cookie via JavaScript
       secure: true,           // Only send over HTTPS
@@ -131,8 +134,9 @@ exports.loginTeacher = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days expiration in milliseconds
       path: '/'               // Make it available across the whole site
     });
+    console.log(token);
 
-    res.status(200).json({ message: 'Login successful', accountType: 'teacher' });
+    res.status(200).json({ message: 'Login successful', accountType: 'teacher', token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error' });

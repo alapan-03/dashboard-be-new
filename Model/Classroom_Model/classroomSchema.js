@@ -10,10 +10,10 @@ const ClassroomSchema = new mongoose.Schema({
     ref: 'Teacher', // Reference to the Teacher model
     required: true 
   },
-  // students: [{ 
-  //   type: mongoose.Schema.Types.ObjectId, 
-  //   ref: 'Student' 
-  // }],
+  students: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Student' 
+  }],
   classroomCode: { 
     type: String, 
     unique: true, 
